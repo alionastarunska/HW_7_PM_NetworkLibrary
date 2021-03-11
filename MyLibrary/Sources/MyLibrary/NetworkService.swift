@@ -36,6 +36,7 @@ public final class DefaultNetworkService: NetworkService {
         }
         
         var task = URLRequest(url: url)
+        task.httpMethod = request.method.rawValue
         ParameterEncoder.encode(parameters: request.requestBody, task: &task, for: request.method)
         
         defaultHeaders.keys.forEach({task.setValue(defaultHeaders[$0], forHTTPHeaderField: $0)})
